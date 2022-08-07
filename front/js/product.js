@@ -21,6 +21,7 @@ return response.json();
    priceProduct.innerHTML= `${products.price}`
    const descriptionProduct = document.getElementById("description");
    descriptionProduct.innerHTML= `${products.description}`;
+   // colors input setup
    const colors = `${products.colors}`;
    let newArray = colors.split(',');
    const select = document.querySelector('select');
@@ -78,7 +79,7 @@ itemQuantity.addEventListener("input", function (qty) {
    addButton.textContent ="Ajouter au panier";
    
 });
-// const infoItem = JSON.parse(localStorage.getItem("Cart"));
+
 
 // function to add a new product
 
@@ -155,6 +156,8 @@ function addedItem() {
    }, 2000)
    
 }
+
+// warning message  if product is already in basket
 function sameColor() {
    let div = document.createElement("div");
    div.style.backgroundColor = "#FF1D23";
