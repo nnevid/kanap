@@ -111,13 +111,19 @@ else{
     
 }
 });
-function pushToArray() {
-   
+
+
+function pushToArray(id, color) {
    let sameItem = productArray.find(it => it.id == userProduct.id && it.color == userProduct.color);
    if (sameItem != null){
-    sameItem.quantity += userProduct.quantity
-    console.log(productArray)
+   console.log(productArray);
+   console.log(sameItem.quantity);
+   sameItem.quantity += userProduct.quantity;
+   saveArray();   
+    
     sameColor();
+  
+   
    }else{
    
     productArray.push(userProduct)
@@ -125,19 +131,22 @@ function pushToArray() {
     userProduct.id = itemId;
     userProduct.color = colorItem;
     userProduct.quantity=parseInt(itemAmount);
-   
+    saveArray(userProduct);
     addedItem ();
-    saveArray(userProduct)
+    
     }
      // localStorage.setItem("Cart", JSON.stringify(productArray));
      
  }
 //Save and retrieve the Cart's info in LS
 function saveArray() {
-   let productArray = JSON.parse(localStorage.getItem("Cart")) || [];
-   productArray = [...productArray, userProduct];
+   let cart = JSON.parse(localStorage.getItem("Cart")) || [];
+   cart = [...productArray, userProduct];
    localStorage.setItem("Cart", JSON.stringify(productArray))
+   console.log("save cart");
+   
  }
+
 
 
 //message to display after adding a product

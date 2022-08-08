@@ -239,7 +239,7 @@ orderButton.addEventListener("click", (e) => {
    let city = cityValid();
    let Email = mail();
    if(Email == false || firstName == false || lastname == false || city == false){
-      alert("Funciona o no")
+      alert("Veuillez vérifier les données du formulaire afin de valider votre commande")
       return false;      
    }else{
       let formConfirm = createContact();
