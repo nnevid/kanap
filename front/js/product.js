@@ -113,15 +113,20 @@ else{
 });
 
 
-function pushToArray(id, color) {
+function pushToArray() {
+   var productArray = JSON.parse(localStorage.getItem('Cart')) || [];
+   
    let sameItem = productArray.find(it => it.id == userProduct.id && it.color == userProduct.color);
    if (sameItem != null){
-   console.log(productArray);
-   console.log(sameItem.quantity);
+   
    sameItem.quantity += userProduct.quantity;
-   saveArray();   
-    
-    sameColor();
+   if(sameItem.quantity > 100){
+      sameItem.quantity = 100;
+      alert('Désolé, vous ne pouvez pas avoir plus de 100 articles du même type dans votre panier')
+   }
+   
+   console.log(sameItem.quantity);
+   console.log(productArray);
   
    
    }else{
@@ -131,21 +136,21 @@ function pushToArray(id, color) {
     userProduct.id = itemId;
     userProduct.color = colorItem;
     userProduct.quantity=parseInt(itemAmount);
-    saveArray(userProduct);
+   //  saveArray(userProduct);
     addedItem ();
     
+    
     }
-     // localStorage.setItem("Cart", JSON.stringify(productArray));
+      localStorage.setItem("Cart", JSON.stringify(productArray));
      
  }
-//Save and retrieve the Cart's info in LS
-function saveArray() {
-   let cart = JSON.parse(localStorage.getItem("Cart")) || [];
-   cart = [...productArray, userProduct];
-   localStorage.setItem("Cart", JSON.stringify(productArray))
-   console.log("save cart");
-   
- }
+
+function testQuantity(){
+   var productArray = JSON.parse(localStorage.getItem('Cart')) || [];
+}
+
+
+ 
 
 
 
