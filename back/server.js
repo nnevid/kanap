@@ -1,6 +1,6 @@
 const http = require('http');
 const app = require('./app');
-const hostname = '0.0.0.0'
+
 const normalizePort = val => {
   const port = parseInt(val, 10);
 
